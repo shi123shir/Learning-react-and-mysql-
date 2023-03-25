@@ -40,6 +40,14 @@ app.post ("/books", (req,res)=>{
     return res.send("book stored sucessfully")
    })
 })
+app.delete("/books/:id", (req, res)=>{
+ const bookId = req.params.id
+ const q = "DELETE FROM books WHERE id = ?"
+ db.query(q,[bookId], (err,data)=>{
+   if(err){
+   return res.send("book is not deleted sucessfully")}
+ })
+})
 app.listen(8080, ()=>{
     console.log("Server is running on my port 8080")
 })
