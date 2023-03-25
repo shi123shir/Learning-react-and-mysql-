@@ -48,6 +48,22 @@ app.delete("/books/:id", (req, res)=>{
    return res.send("book is not deleted sucessfully")}
  })
 })
+
+app.put("/books/:id", (req, res)=>{
+   const bookId = req.params.id
+   const q = "UPDATE books SET `title` = ?, `desc`= ?,  `cover` = ?, `price`= ? WHERE id = ?";
+   const values =[
+    req.body.title,
+    req.body.desc, 
+    req.body.cover,
+    req.body.price
+   ]
+   db.query(q,[...values,bookId], (err,data)=>{
+     if(err){
+     return res.send("book has updated sucessfully")}
+     return res.json(data)
+   })
+  })
 app.listen(8080, ()=>{
     console.log("Server is running on my port 8080")
 })

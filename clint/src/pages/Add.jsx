@@ -50,7 +50,7 @@ const Add = () => {
         onChange={handleChange}
         name="price"
       />
-      <button onClick={handleClick}>Add </button>
+      <button onClick={handleClick} className ="formButton">Add </button>
     </div>
   );
 };
